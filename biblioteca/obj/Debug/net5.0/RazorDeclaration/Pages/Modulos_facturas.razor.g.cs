@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace biblioteca.Shared
+namespace biblioteca.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,15 @@ using biblioteca.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\Modulos_facturas.razor"
+using biblioteca.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Modulos_facturas")]
+    public partial class Modulos_facturas : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,16 +98,15 @@ using biblioteca.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Shared\NavMenu.razor"
+#line 39 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\Modulos_facturas.razor"
        
-    private bool collapseNavMenu = true;
+List<Facturas> Getfacturas(){
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+    return db.Facturas.ToList();
+}
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+
 
 #line default
 #line hidden

@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace biblioteca.Shared
+namespace biblioteca.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,15 @@ using biblioteca.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\RegistrarFacturas.razor"
+using biblioteca.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/RegistrarFacturas")]
+    public partial class RegistrarFacturas : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,20 +98,75 @@ using biblioteca.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+#line 54 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\RegistrarFacturas.razor"
+        
+      Facturas factura = new Facturas();
+      string result="";
+      int id = 0;
+       protected override void OnInitialized() 
     {
-        collapseNavMenu = !collapseNavMenu;
+      factura.FechaRenta = DateTime.Now;
+      factura.FechaRetorno = DateTime.Now;
     }
+
+    List<Libros> Getlibros(){
+        btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+        return db.Libros.ToList();
+    }
+
+protected async Task Registrar(){
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+
+    if(factura.NombreCliente == null || factura.ApellidoCliente == null || factura.TelefonoCliente == null || id == 0){
+      return;
+    }
+    
+    factura.IdLibro = id;
+    var facturas_libros = db.Facturas.Where(x=>x.IdLibro == factura.IdLibro).ToList();
+
+    
+
+     foreach(var item in facturas_libros){
+          if(factura.FechaRenta == item.FechaRenta || 
+          factura.FechaRetorno == item.FechaRetorno || 
+          factura.FechaRenta >= item.FechaRenta && factura.FechaRenta <= item.FechaRetorno ||
+          factura.FechaRetorno >= item.FechaRenta && factura.FechaRetorno <= item.FechaRetorno
+          ){
+              result = "Libro ocupado en esta fecha";
+              return;
+          }
+
+
+      }
+
+      var compare_f = DateTime.Compare(factura.FechaRenta, DateTime.Now);
+      var compare_f2 = DateTime.Compare(factura.FechaRenta, factura.FechaRetorno);
+      if(compare_f < 0 || compare_f2 > 0)
+      {
+          result = "Error en la fecha";
+          return;
+      }
+
+       var libro = db.Libros.Where(x => x.IdLibro == factura.IdLibro).First();
+      var costo = libro.Precio;
+      var dias = factura.FechaRetorno.Subtract(factura.FechaRenta).TotalDays;
+      var resultado = costo * dias;
+  
+      factura.Precio = resultado;
+
+
+      db.Facturas.Add(factura);
+      await db.SaveChangesAsync();
+      NavigationManager.NavigateTo("/Modulos_facturas");
+
+}
+
+  
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

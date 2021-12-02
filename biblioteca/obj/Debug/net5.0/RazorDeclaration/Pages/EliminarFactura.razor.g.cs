@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace biblioteca.Shared
+namespace biblioteca.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,16 @@ using biblioteca.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 4 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\EliminarFactura.razor"
+using biblioteca.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/EliminarFactura")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/EliminarFactura/{id:int}")]
+    public partial class EliminarFactura : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,20 +99,23 @@ using biblioteca.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
+#line 5 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\EliminarFactura.razor"
+      
+ [Parameter]
+    public int id {get; set;}
+    protected override async Task OnInitializedAsync() {
+        btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+        var drop = db.Facturas.Where(x => x.IdFactura == id);
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
+        db.Facturas.RemoveRange(drop);
+      await db.SaveChangesAsync();
+      NavigationManager.NavigateTo("/Modulos_facturas");
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

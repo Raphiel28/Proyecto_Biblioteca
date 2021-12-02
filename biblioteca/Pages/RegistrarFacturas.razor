@@ -1,0 +1,116 @@
+@page "/RegistrarFacturas"
+@using biblioteca.Models
+@inject NavigationManager NavigationManager
+
+<div class="container">
+  <h4>Registrar</h4>
+
+  <EditForm Model="@factura">
+  <div class="mb-3">
+  <label for="Idlibro" class="form-label">Id del libro</label>
+  <select class="form-select" aria-label="Default select example" id="Idlibro" @bind = "@id" required>
+    <option value = "0" >Open this select menu</option>
+    @foreach (var item in Getlibros())
+    {
+      <option value="@item.IdLibro">@item.NombreLibro</option>  
+    }
+    
+    
+  </select>
+    </div>
+
+<div class="mb-3">
+  <label for="Ncliente" class="form-label">Nombre del cliente</label>
+  <input type="text" id = "Ncliente" @bind="@factura.NombreCliente"  required>
+    </div>
+
+<div class="mb-3">
+  <label for="Acliente" class="form-label">Apellido del cliente</label>
+  <input type="text" id = "Acliente" @bind="@factura.ApellidoCliente" required>
+    </div>
+
+    <div class="mb-3">
+  <label for="Tcliente" class="form-label">Telefono del cliente</label>
+  <input type="text" id = "Tcliente" @bind="@factura.TelefonoCliente" required>
+    </div>
+
+
+    <div class="mb-3">
+  <label for="F_inicial" class="form-label">Dia de la renta</label>
+  <input type="date"  id = "F_inicial" @bind = "@factura.FechaRenta">
+    </div>
+    <div class="mb-3">
+  <label for="F_final" class="form-label">Dia del retorno</label>
+  <input type="date"  id = "F_final" @bind = "@factura.FechaRetorno">
+    </div>
+    <input type="submit" class = "btn btn-primary" @onclick = "Registrar" value="Registrar" >
+    <a class="btn btn-danger" href="/Modulos_facturas">Cancelar</a>
+    
+  </EditForm>
+  </div>
+<h6>@result</h6>
+  
+
+  @code{
+      Facturas factura = new Facturas();
+      string result="";
+      int id = 0;
+       protected override void OnInitialized() 
+    {
+      factura.FechaRenta = DateTime.Now;
+      factura.FechaRetorno = DateTime.Now;
+    }
+
+    List<Libros> Getlibros(){
+        btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+        return db.Libros.ToList();
+    }
+
+protected async Task Registrar(){
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+
+    if(factura.NombreCliente == null || factura.ApellidoCliente == null || factura.TelefonoCliente == null || id == 0){
+      return;
+    }
+    
+    factura.IdLibro = id;
+    var facturas_libros = db.Facturas.Where(x=>x.IdLibro == factura.IdLibro).ToList();
+
+    
+
+     foreach(var item in facturas_libros){
+          if(factura.FechaRenta == item.FechaRenta || 
+          factura.FechaRetorno == item.FechaRetorno || 
+          factura.FechaRenta >= item.FechaRenta && factura.FechaRenta <= item.FechaRetorno ||
+          factura.FechaRetorno >= item.FechaRenta && factura.FechaRetorno <= item.FechaRetorno
+          ){
+              result = "Libro ocupado en esta fecha";
+              return;
+          }
+
+
+      }
+
+      var compare_f = DateTime.Compare(factura.FechaRenta, DateTime.Now);
+      var compare_f2 = DateTime.Compare(factura.FechaRenta, factura.FechaRetorno);
+      if(compare_f < 0 || compare_f2 > 0)
+      {
+          result = "Error en la fecha";
+          return;
+      }
+
+       var libro = db.Libros.Where(x => x.IdLibro == factura.IdLibro).First();
+      var costo = libro.Precio;
+      var dias = factura.FechaRetorno.Subtract(factura.FechaRenta).TotalDays;
+      var resultado = costo * dias;
+  
+      factura.Precio = resultado;
+
+
+      db.Facturas.Add(factura);
+      await db.SaveChangesAsync();
+      NavigationManager.NavigateTo("/Modulos_facturas");
+
+}
+
+  }

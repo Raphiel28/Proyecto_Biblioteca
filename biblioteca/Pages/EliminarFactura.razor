@@ -1,0 +1,16 @@
+@page "/EliminarFactura"
+@page "/EliminarFactura/{id:int}"
+@inject NavigationManager NavigationManager
+@using biblioteca.Models
+@code{
+ [Parameter]
+    public int id {get; set;}
+    protected override async Task OnInitializedAsync() {
+        btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+        var drop = db.Facturas.Where(x => x.IdFactura == id);
+
+        db.Facturas.RemoveRange(drop);
+      await db.SaveChangesAsync();
+      NavigationManager.NavigateTo("/Modulos_facturas");
+    }
+}
