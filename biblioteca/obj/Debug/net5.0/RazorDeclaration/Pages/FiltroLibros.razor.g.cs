@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace biblioteca.Shared
+namespace biblioteca.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,15 @@ using biblioteca.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\FiltroLibros.razor"
+using biblioteca.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/FiltroLibros")]
+    public partial class FiltroLibros : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,15 +98,21 @@ using biblioteca.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
+#line 43 "C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\Pages\FiltroLibros.razor"
+      
+    DateTime calendar = DateTime.Now;
+    
+    
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    void Buscar(){
+  
+}
+ 
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
+
+    List<Facturas> Getfacturas(DateTime cal){
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+    return db.Facturas.Where(x=> x.FechaRenta == cal).ToList();
     }
 
 #line default

@@ -168,3 +168,5 @@ C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\obj\Debug\net5.0\
 C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EliminarFactura.razor.g.cs
 C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\EditarFactura.razor.g.cs
 C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EditarFactura.razor.g.cs
+C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\FiltroLibros.razor.g.cs
+C:\Users\raphiel burdier\Desktop\ProyectoBiblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\FiltroLibros.razor.g.cs

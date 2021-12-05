@@ -1,0 +1,58 @@
+@page "/FiltroLibros"
+@using biblioteca.Models
+
+<input type="date"  @bind = "@calendar">
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Libro</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Fecha de Renta</th>
+      <th scope="col">Fecha de retorno</th>
+    </tr>
+  </thead>
+  <tbody>
+      
+    @foreach(var item in Getfacturas(calendar)){
+    <tr>
+    
+      <th scope="row">@item.IdFactura</th>
+      <th scope="row">@item.IdLibro</th>
+      <th scope="row">@item.NombreCliente</th>
+      <th scope="row">@item.ApellidoCliente</th>
+      <th scope="row">@item.TelefonoCliente</th>
+      <th scope="row">@item.Precio</th>
+      <th scope="row">@item.FechaRenta</th>
+      <th scope="row">@item.FechaRetorno</th>
+
+      
+    </tr>
+    }
+        
+  </tbody>
+</table>
+
+
+@code{
+    DateTime calendar = DateTime.Now;
+    
+    
+
+    void Buscar(){
+  
+}
+ 
+
+
+    List<Facturas> Getfacturas(DateTime cal){
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+    return db.Facturas.Where(x=> x.FechaRenta == cal).ToList();
+    }
+}
