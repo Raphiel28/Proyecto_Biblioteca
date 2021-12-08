@@ -4,6 +4,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Libro</th>
       <th scope="col">Genero</th>
       <th scope="col">Precio</th>
@@ -15,7 +16,7 @@
   <tbody>
     @foreach(var item in Getlibros()){
     <tr>
-    
+      <td scope="row">@item.IdLibro</td>
       <td scope="row">@item.NombreLibro</td>
       <td scope="row">@item.GeneroLibro</td>
       <td scope="row">@item.Precio</td>
@@ -24,8 +25,8 @@
       <td scope="row">@item.EditorialLibro</td>
 
       
-        @*<th><a class = "btn btn-warning" href="/EditarFactura/@item.IdFactura">Editar</a></th>
-        <th><a class = "btn btn-danger" href="/EliminarFactura/@item.IdFactura">Eliminar</a></th>*@
+        @*<th><a class = "btn btn-warning" href="/EditarFactura/@item.IdFactura">Editar</a></th>*@
+        <th><a class = "btn btn-danger" href="/EliminarLibro/@item.IdLibro">Eliminar</a></th>
     </tr>
     }
   </tbody>
