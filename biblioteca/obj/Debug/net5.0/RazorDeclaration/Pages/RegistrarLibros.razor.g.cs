@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace biblioteca.Shared
+namespace biblioteca.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,15 @@ using biblioteca.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\Pages\RegistrarLibros.razor"
+using biblioteca.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/RegistrarLibros")]
+    public partial class RegistrarLibros : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,20 +98,25 @@ using biblioteca.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
+#line 45 "C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\Pages\RegistrarLibros.razor"
+      
+    Libros libro = new Libros();
+    string result="";
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
+protected async Task Registrar(){
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+    
+    db.Libros.Add(libro);
+    await db.SaveChangesAsync();
+    result = "Libro registrado correctamente!!!";
+    NavigationManager.NavigateTo("/Modulos_libros");
     }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

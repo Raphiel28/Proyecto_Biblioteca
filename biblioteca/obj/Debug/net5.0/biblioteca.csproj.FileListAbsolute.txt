@@ -344,3 +344,5 @@ C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Pro
 C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\ref\biblioteca.dll
 C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\biblioteca.pdb
 C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\biblioteca.genruntimeconfig.cache
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\RegistrarLibros.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\RegistrarLibros.razor.g.cs
