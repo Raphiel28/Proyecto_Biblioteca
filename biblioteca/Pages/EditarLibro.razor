@@ -1,0 +1,69 @@
+﻿@page "/EditarLibro"
+@page "/EditarLibro/{id:int}"
+@inject NavigationManager NavigationManager
+@using biblioteca.Models
+
+<div class="container">
+   <h4>Editar</h4>
+  <EditForm Model="@libro">
+
+<div class="mb-3">
+  <label for="NLibro" class="form-label">Nombre del libro</label>
+  <input type="text" id = "NLibro" @bind="@libro.NombreLibro"  required>
+    </div>
+
+<div class="mb-3">
+  <label for="GLibro" class="form-label">Genero del Libro</label>
+  <input type="text" id = "GLibro" @bind="@libro.GeneroLibro" required>
+    </div>
+
+    <div class="mb-3">
+  <label for="PLibro" class="form-label">Precio</label>
+  <input type="text" id = "PLibro" @bind="@libro.Precio" required>
+    </div>
+
+
+    <div class="mb-3">
+  <label for="CDisponibles" class="form-label">Copias Disponibles</label>
+  <input type="text"  id = "CDisponibles" @bind = "@libro.CopiasDisponibles">
+    </div>
+    <div class="mb-3">
+  <label for="VLibros" class="form-label">Ventas</label>
+  <input type="text"  id = "VLibros" @bind = "@libro.Ventas">
+    </div>
+    <div class="mb-3">
+  <label for="EditorialLibro" class="form-label">Editorial</label>
+  <input type="text"  id = "EditorialLibro" @bind = "@libro.EditorialLibro">
+    </div>
+  </EditForm>
+</div>
+<h6>@result</h6>
+<input type="submit" class = "btn btn-primary" @onclick = "Editar" value="Guardar" >
+<a class="btn btn-danger" href="/Modulos_libros">Cancelar</a>
+
+@code{
+    [Parameter]
+    public int id {get; set;}
+    Libros libro = new Libros();
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+    string result="";
+    int idL = 0;
+
+    protected override void OnInitialized(){
+     
+      
+       libro = db.Libros.Where(x=> x.IdLibro == id).First();
+       idL = libro.IdLibro;
+       
+    }
+
+    async Task Editar()
+    {
+        btnnoysoy5udemk46n23Context bd = new btnnoysoy5udemk46n23Context();
+       
+
+        await db.SaveChangesAsync();
+        result = "Editado con exito!";
+        NavigationManager.NavigateTo("/Modulos_libros");
+    }
+}

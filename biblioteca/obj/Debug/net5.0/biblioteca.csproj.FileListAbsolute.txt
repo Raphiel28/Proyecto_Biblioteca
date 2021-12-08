@@ -524,3 +524,5 @@ C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\biblioteca.p
 C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\biblioteca.genruntimeconfig.cache
 C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\EliminarLibro.razor.g.cs
 C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EliminarLibro.razor.g.cs
+C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\EditarLibro.razor.g.cs
+C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EditarLibro.razor.g.cs
