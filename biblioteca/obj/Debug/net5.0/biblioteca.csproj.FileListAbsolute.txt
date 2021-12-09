@@ -526,3 +526,7 @@ C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclara
 C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EliminarLibro.razor.g.cs
 C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\EditarLibro.razor.g.cs
 C:\Users\HP\Desktop\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EditarLibro.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\EditarLibro.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\EliminarLibro.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EditarLibro.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\EliminarLibro.razor.g.cs

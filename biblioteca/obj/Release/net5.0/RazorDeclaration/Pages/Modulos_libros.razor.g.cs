@@ -98,7 +98,7 @@ using biblioteca.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\Pages\Modulos_libros.razor"
+#line 36 "C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\Pages\Modulos_libros.razor"
        
 List<Libros> Getlibros(){
     btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
