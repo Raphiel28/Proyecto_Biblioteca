@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alane\\source\\repos\\Proyecto_Bibliotecaa\\biblioteca\\biblioteca.csproj": {}
+    "C:\\Users\\HP 5540\\Desktop\\Introduccion a la Ingenieria de Software\\Biblioteca\\Proyecto_Biblioteca\\biblioteca\\biblioteca.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alane\\source\\repos\\Proyecto_Bibliotecaa\\biblioteca\\biblioteca.csproj": {
+    "C:\\Users\\HP 5540\\Desktop\\Introduccion a la Ingenieria de Software\\Biblioteca\\Proyecto_Biblioteca\\biblioteca\\biblioteca.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alane\\source\\repos\\Proyecto_Bibliotecaa\\biblioteca\\biblioteca.csproj",
+        "projectUniqueName": "C:\\Users\\HP 5540\\Desktop\\Introduccion a la Ingenieria de Software\\Biblioteca\\Proyecto_Biblioteca\\biblioteca\\biblioteca.csproj",
         "projectName": "biblioteca",
-        "projectPath": "C:\\Users\\alane\\source\\repos\\Proyecto_Bibliotecaa\\biblioteca\\biblioteca.csproj",
-        "packagesPath": "C:\\Users\\alane\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alane\\source\\repos\\Proyecto_Bibliotecaa\\biblioteca\\obj\\",
+        "projectPath": "C:\\Users\\HP 5540\\Desktop\\Introduccion a la Ingenieria de Software\\Biblioteca\\Proyecto_Biblioteca\\biblioteca\\biblioteca.csproj",
+        "packagesPath": "C:\\Users\\HP 5540\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP 5540\\Desktop\\Introduccion a la Ingenieria de Software\\Biblioteca\\Proyecto_Biblioteca\\biblioteca\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\alane\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\HP 5540\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -81,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

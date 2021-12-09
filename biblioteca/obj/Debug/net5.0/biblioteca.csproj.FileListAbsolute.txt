@@ -722,3 +722,15 @@ C:\Users\alane\OneDrive\Documentos\Clases Semestre 7\Ingenieria de Software\Proy
 C:\Users\alane\OneDrive\Documentos\Clases Semestre 7\Ingenieria de Software\Proyecto Final\Proyecto_Biblioteca-main\Proyecto_Biblioteca-main\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\Login.razor.g.cs
 C:\Users\alane\OneDrive\Documentos\Clases Semestre 7\Ingenieria de Software\Proyecto Final\Proyecto_Biblioteca-main\Proyecto_Biblioteca-main\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\Register.razor.g.cs
 C:\Users\alane\OneDrive\Documentos\Clases Semestre 7\Ingenieria de Software\Proyecto Final\Proyecto_Biblioteca-main\Proyecto_Biblioteca-main\biblioteca\obj\Debug\net5.0\Razor\Pages\FiltroLibrosVentaAlta.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\Account\AdminDelete.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\Account\AdminEdit.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\Account\AdminList.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Login.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Register.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\RazorDeclaration\Pages\FiltroLibrosVentaAlta.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\AdminDelete.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\AdminEdit.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\AdminList.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\Login.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\Account\Register.razor.g.cs
+C:\Users\HP 5540\Desktop\Introduccion a la Ingenieria de Software\Biblioteca\Proyecto_Biblioteca\biblioteca\obj\Debug\net5.0\Razor\Pages\FiltroLibrosVentaAlta.razor.g.cs
