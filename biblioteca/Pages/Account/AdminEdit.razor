@@ -1,0 +1,88 @@
+﻿@page "/Account/EditarCuenta"
+@page "/Account/EditarCuenta/{id:int}"
+@inject NavigationManager NavigationManager
+@using biblioteca.Models;
+@using biblioteca.Data.AdminUsuarios;
+@inject NavigationManager NavigationManager
+@inject IRegistrosUsuarios registrosusuarios
+@inject IJSRuntime JSRuntime
+
+@if (Usuario.admin == true)
+{
+<h3>Editar Cuenta</h3>
+                <div class="container">
+                    <h4>Editar</h4>
+                    <EditForm Model="@usuarios">
+
+                        <div class="mb-3">
+                            <label for="NUsuario" class="form-label">Nombre del Usuario</label>
+                            <input type="text" id="NUsuario" @bind="@usuarios.NombreUsuario" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="AUsuario" class="form-label">Apellido del Usuario</label>
+                            <input type="text" id="AUsuario" @bind="@usuarios.ApellidoUsuario" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="CUsuario" class="form-label">Correo del Usuario</label>
+                            <input type="text" id="CUsuario" @bind="@usuarios.CorreoUsuario" required>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="TUsuario" class="form-label">Telefono del Usuario</label>
+                            <input type="text" id="TUsuario" @bind="@usuarios.TelefonoUsuario">
+                        </div>
+                        <div class="mb-3">
+                            <label for="PUsuario" class="form-label">Clave del Usuario</label>
+                            <input type="text" id="PUsuario" @bind="@usuarios.Contrasena">
+                        </div>
+                        <div class="mb-3">
+                            <p>Convertir/Remover a un admin?</p>
+                            <button class="btn btn-info" @onclick="ToAdmin">Admin</button>
+                        </div>
+                    </EditForm>
+                </div>
+                 <h6>@result</h6>
+                 <input type="submit" class="btn btn-primary" @onclick="Editar" value="Guardar">
+                 <a class="btn btn-danger" href="/Account/Admin">Cancelar</a> }
+                 else
+                  {
+                    <div class="container">
+                    <h1 class="display-6">Usted no esta autorizado para ver este contenido.</h1>
+                    <h2>Solo los administradores pueden ver este contenido.</h2>
+                    </div>}
+
+@code { [Parameter]
+    public int id { get; set; }
+    Usuarios usuarios = new Usuarios();
+    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+    string result = "";
+    int idL = 0;
+
+    protected override void OnInitialized()
+    {
+
+
+        usuarios = db.Usuarios.Where(x => x.IdUsuario == id).First();
+        idL = usuarios.IdUsuario;
+
+    }
+
+    async Task Editar()
+    {
+        btnnoysoy5udemk46n23Context bd = new btnnoysoy5udemk46n23Context();
+
+
+        await db.SaveChangesAsync();
+        result = "Editado con exito!";
+        NavigationManager.NavigateTo("/Account/Admin");
+    }
+
+    async Task ToAdmin()
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Esta seguro que desea convertir/remover a '{usuarios.NombreUsuario}' como administrador?"))
+            return;
+        usuarios.Admin = !usuarios.Admin;
+    } }

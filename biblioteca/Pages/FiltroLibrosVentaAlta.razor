@@ -1,0 +1,37 @@
+﻿@page "/FiltroVentaAlta"
+@using biblioteca.Models;
+
+<p>Los Libros mas vendidos, mostradas de mayor a menor.</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID del Libro</th>
+            <th>Nombre del Libro</th>
+            <th>Genero del Libro</th>
+            <th>Editorial del Libro</th>
+            <th>Copias Disponibles del Libro</th>
+            <th>Precio del Libro</th>
+            <th>Ventas del Libro</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Libros libros in GetLibros())
+        {
+        <tr>
+            <td>@libros.IdLibro</td>
+            <td>@libros.NombreLibro</td>
+            <td>@libros.GeneroLibro</td>
+            <td>@libros.EditorialLibro</td>
+            <td>@libros.CopiasDisponibles</td>
+            <td>@libros.Precio</td>
+            <td>@libros.Ventas</td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<Libros> GetLibros() => new btnnoysoy5udemk46n23Context().Libros.OrderByDescending(l => l.Ventas).ToList();
+}
+

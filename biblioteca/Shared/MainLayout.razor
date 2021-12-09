@@ -1,4 +1,9 @@
 @inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@using biblioteca.Models;
+@using biblioteca.Data.AdminUsuarios;
+@inject NavigationManager NavigationManager
+@inject IRegistrosUsuarios registrosusuarios
 
 <div class="page">
     <div class="sidebar">
@@ -7,11 +12,41 @@
 
     <div class="main">
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            @if (Usuario.correo != null && Usuario.contrasena != null)
+            {
+<table>
+    <tr>
+        <th>@Usuario.correo</th>
+        @if (Usuario.admin == true)
+        {
+            <td>
+               <a style="color: blue;" href="/Account/Admin">Panel del Administrador</a>
+                </td>
+        }
+            <td>
+                <input type="button" value="Cerrar Sesion" class="btn btn-secondary" @onclick="CerrarSesion" />
+            </td>
+        </tr>
+</table> }
+else
+{
+<a style="color: blue;" href="/Account/Login">Iniciar sesion</a>
+                <a style="color: blue;" href="/Account/Register">Registrarse</a>}
         </div>
-
         <div class="content px-4">
             @Body
         </div>
     </div>
 </div>
+
+@code{ Usuario user = new Usuario();
+    private void CerrarSesion()
+    {
+        Usuario.correo = null;
+        Usuario.contrasena = null;
+        Usuario.id = 0;
+        Usuario.admin = false;
+        NavigationManager.NavigateTo("/");
+    }
+    }
+

@@ -1,6 +1,9 @@
 @page "/Modulos_facturas"
 @using biblioteca.Models
+@using biblioteca.Data.AdminUsuarios;
 
+@if (Usuario.correo != null && Usuario.contrasena != null)
+{
 <table class="table">
   <thead>
     <tr>
@@ -15,26 +18,41 @@
     </tr>
   </thead>
   <tbody>
-    @foreach(var item in Getfacturas()){
-    <tr>
-    
-      <td scope="row">@item.IdFactura</td>
-      <td scope="row">@item.IdLibro</td>
-      <td scope="row">@item.NombreCliente</td>
-      <td scope="row">@item.ApellidoCliente</td>
-      <td scope="row">@item.TelefonoCliente</td>
-      <td scope="row">@item.Precio</td>
-      <td scope="row">@item.FechaRenta</td>
-      <td scope="row">@item.FechaRetorno</td>
+    @foreach (var item in Getfacturas())
+    {
+      <tr>
 
-      
-        <th><a class = "btn btn-warning" href="/EditarFactura/@item.IdFactura">Editar</a></th>
-        <th><a class = "btn btn-danger" href="/EliminarFactura/@item.IdFactura">Eliminar</a></th>
-    </tr>
+          <td scope="row">@item.IdFactura</td>
+          <td scope="row">@item.IdLibro</td>
+          <td scope="row">@item.NombreCliente</td>
+          <td scope="row">@item.ApellidoCliente</td>
+          <td scope="row">@item.TelefonoCliente</td>
+          <td scope="row">@item.Precio</td>
+          <td scope="row">@item.FechaRenta</td>
+          <td scope="row">@item.FechaRetorno</td>
+
+          @if (Usuario.admin == true)
+          {
+             <th><a class="btn btn-warning" href="/EditarFactura/@item.IdFactura">Editar</a></th>
+             <th><a class="btn btn-danger" href="/EliminarFactura/@item.IdFactura">Eliminar</a></th>
+          }
+
+      </tr>
     }
   </tbody>
 </table>
 <a class = "btn btn-primary" href="/RegistrarFacturas">Registrar</a>
+} 
+            else
+            {
+<div class="container">
+    <h1 class="display-6">Debes Iniciar Sesion con un correo valido para Vizualizar el contenido</h1>
+    <br>
+    <p>
+        Ya tienes una cuenta? Inicia Sesion
+    </p>
+    <a href="/Account/Login">Iniciar sesion</a>
+</div>}
         
 @code {
 List<Facturas> Getfacturas(){

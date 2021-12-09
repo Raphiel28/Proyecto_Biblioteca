@@ -1,0 +1,14 @@
+﻿@page "/Account/EliminarCuenta"
+@page "/Account/EliminarCuenta/{id:int}"
+@inject NavigationManager NavigationManager
+@using biblioteca.Models
+@code{ [Parameter]
+            public int id { get; set; }
+            protected override async Task OnInitializedAsync()
+            {
+                btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+                var drop = db.Usuarios.Where(x => x.IdUsuario == id);
+                db.Usuarios.RemoveRange(drop);
+                await db.SaveChangesAsync();
+                NavigationManager.NavigateTo("/Account/Admin");
+            } }

@@ -1,5 +1,5 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">biblioteca</a>
+    <a class="navbar-brand" href="">Biblioteca Virtual Biblos</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,34 +7,37 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
+        <li class="nav-item-px-3">
+            <br>
+            <center>
+                <img src="https://i.imgur.com/9W1Q7MK.png" alt="Logo" style="width:200px;height:150px; border-radius: 5%;">
+            </center>
+            <br>
+        </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </li>
-        @*<li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>*@
+
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="Modulos_libros">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Libros
+                <span class="oi oi-book" aria-hidden="true"></span> Libros
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="Modulos_facturas">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Facturas
+                <span class="oi oi-bookmark" aria-hidden="true"></span> Facturas
             </NavLink>
         </li>
-         <li class="nav-item px-3">
+        <li class="nav-item px-3">
             <NavLink class="nav-link" href="FiltroLibros">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Filtro Libros
+                <span class="oi oi-magnifying-glass" aria-hidden="true"></span> Filtro de Facturas
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/FiltroVentaAlta">
+                <span class="oi oi-dollar" aria-hidden="true"></span> Historial de ventas de Libros
             </NavLink>
         </li>
     </ul>

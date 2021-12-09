@@ -1,7 +1,10 @@
 @page "/RegistrarFacturas"
 @using biblioteca.Models
 @inject NavigationManager NavigationManager
+@using biblioteca.Data.AdminUsuarios;
 
+@if (Usuario.correo != null && Usuario.contrasena != null)
+{
 <div class="container">
   <h4>Registrar</h4>
 
@@ -49,68 +52,80 @@
   </EditForm>
   </div>
 <h6>@result</h6>
+}else
+            {
+<div class="container">
+    <h1 class="display-6">Debes Iniciar Sesion con un correo valido para Vizualizar el contenido</h1>
+    <br>
+    <p>
+        Ya tienes una cuenta? Inicia Sesion
+    </p>
+    <a href="/Account/Login">Iniciar sesion</a>
+</div>}
   
 
   @code{
       Facturas factura = new Facturas();
       string result="";
       int id = 0;
-       protected override void OnInitialized() 
-    {
-      factura.FechaRenta = DateTime.Now;
-      factura.FechaRetorno = DateTime.Now;
-    }
+      protected override void OnInitialized()
+      {
+          factura.FechaRenta = DateTime.Now;
+          factura.FechaRetorno = DateTime.Now;
+      }
 
-    List<Libros> Getlibros(){
-        btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
-        return db.Libros.ToList();
-    }
+      List<Libros> Getlibros(){
+          btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+          return db.Libros.ToList();
+      }
 
-protected async Task Registrar(){
-    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+      protected async Task Registrar(){
+          btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
 
-    if(factura.NombreCliente == null || factura.ApellidoCliente == null || factura.TelefonoCliente == null || id == 0){
-      return;
-    }
-    
-    factura.IdLibro = id;
-    var facturas_libros = db.Facturas.Where(x=>x.IdLibro == factura.IdLibro).ToList();
-
-    
-
-     foreach(var item in facturas_libros){
-          if(factura.FechaRenta == item.FechaRenta || 
-          factura.FechaRetorno == item.FechaRetorno || 
-          factura.FechaRenta >= item.FechaRenta && factura.FechaRenta <= item.FechaRetorno ||
-          factura.FechaRetorno >= item.FechaRenta && factura.FechaRetorno <= item.FechaRetorno
-          ){
-              result = "Libro ocupado en esta fecha";
+          if(factura.NombreCliente == null || factura.ApellidoCliente == null || factura.TelefonoCliente == null || id == 0){
               return;
           }
 
+          factura.IdLibro = id;
+          var facturas_libros = db.Facturas.Where(x=>x.IdLibro == factura.IdLibro).ToList();
+
+
+
+          foreach(var item in facturas_libros){
+              if(factura.FechaRenta == item.FechaRenta ||
+              factura.FechaRetorno == item.FechaRetorno ||
+              factura.FechaRenta >= item.FechaRenta && factura.FechaRenta <= item.FechaRetorno ||
+              factura.FechaRetorno >= item.FechaRenta && factura.FechaRetorno <= item.FechaRetorno
+              ){
+                  result = "Libro ocupado en esta fecha";
+                  return;
+              }
+
+
+          }
+
+          var compare_f = DateTime.Compare(factura.FechaRenta, DateTime.Now);
+          var compare_f2 = DateTime.Compare(factura.FechaRenta, factura.FechaRetorno);
+          if(compare_f < 0 || compare_f2 > 0)
+          {
+              result = "Error en la fecha";
+              return;
+          }
+
+          var libro = db.Libros.Where(x => x.IdLibro == factura.IdLibro).First();
+          var costo = libro.Precio;
+          var dias = factura.FechaRetorno.Subtract(factura.FechaRenta).TotalDays;
+          var resultado = costo * dias;
+
+          factura.Precio = resultado;
+
+          libro.Ventas = libro.Ventas + 1;
+          libro.CopiasDisponibles = libro.CopiasDisponibles - 1;
+
+          db.Facturas.Add(factura);
+          await db.SaveChangesAsync();
+          NavigationManager.NavigateTo("/Modulos_facturas");
 
       }
-
-      var compare_f = DateTime.Compare(factura.FechaRenta, DateTime.Now);
-      var compare_f2 = DateTime.Compare(factura.FechaRenta, factura.FechaRetorno);
-      if(compare_f < 0 || compare_f2 > 0)
-      {
-          result = "Error en la fecha";
-          return;
-      }
-
-       var libro = db.Libros.Where(x => x.IdLibro == factura.IdLibro).First();
-      var costo = libro.Precio;
-      var dias = factura.FechaRetorno.Subtract(factura.FechaRenta).TotalDays;
-      var resultado = costo * dias;
-  
-      factura.Precio = resultado;
-
-
-      db.Facturas.Add(factura);
-      await db.SaveChangesAsync();
-      NavigationManager.NavigateTo("/Modulos_facturas");
-
-}
 
   }

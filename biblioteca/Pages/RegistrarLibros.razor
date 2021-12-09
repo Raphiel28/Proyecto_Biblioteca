@@ -1,7 +1,10 @@
 @page "/RegistrarLibros"
 @using biblioteca.Models
 @inject NavigationManager NavigationManager
+@using biblioteca.Data.AdminUsuarios;
 
+@if (Usuario.correo != null && Usuario.contrasena != null)
+{
 <div class="container">
   <h4>Registrar</h4>
 
@@ -41,6 +44,16 @@
   </EditForm>
   </div>
 <h6>@result</h6>
+} else
+            {
+<div class="container">
+    <h1 class="display-6">Debes Iniciar Sesion con un correo valido para Vizualizar el contenido</h1>
+    <br>
+    <p>
+        Ya tienes una cuenta? Inicia Sesion
+    </p>
+    <a href="/Account/Login">Iniciar sesion</a>
+</div>}
 
 @code{
     Libros libro = new Libros();

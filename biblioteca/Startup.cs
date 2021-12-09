@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using biblioteca.Data;
+using biblioteca.Models;
+using biblioteca.Data.AdminUsuarios;
 
 namespace biblioteca
 {
@@ -29,6 +31,8 @@ namespace biblioteca
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddDbContext<btnnoysoy5udemk46n23Context>();
+            services.AddScoped<IRegistrosUsuarios, RegistrosUsuarios>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

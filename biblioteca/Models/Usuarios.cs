@@ -15,6 +15,6 @@ namespace biblioteca.Models
         public string CorreoUsuario { get; set; }
         public string Contrasena { get; set; }
         public string TelefonoUsuario { get; set; }
-        public bool? Admin { get; set; }
+        public bool Admin { get; set; }
     }
 }

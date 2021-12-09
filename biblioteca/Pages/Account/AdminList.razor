@@ -1,0 +1,56 @@
+﻿@page "/Account/Admin"
+
+@inject NavigationManager NavigationManager
+@using biblioteca.Models;
+@using biblioteca.Data.AdminUsuarios;
+@inject NavigationManager NavigationManager
+@inject IRegistrosUsuarios registrosusuarios
+<h3>Plataforma de Administradores.</h3>
+@if (Usuario.admin == true)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id del Usuario</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Clave</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var acc in GetUsuarios())
+        {
+<tr>
+    <td scope="row">@acc.IdUsuario</td>
+    <td scope="row">@acc.NombreUsuario</td>
+    <td scope="row">@acc.ApellidoUsuario</td>
+    <td scope="row">@acc.CorreoUsuario</td>
+    <td scope="row">@acc.Contrasena</td>
+    <td scope="row">@acc.TelefonoUsuario</td>
+    <td scope="row">@acc.Admin</td>
+
+    @if (Usuario.admin == true)
+    {
+       <th><a class="btn btn-warning" href="/Account/EditarCuenta/@acc.IdUsuario">Editar Usuario</a></th>
+       <th><a class="btn btn-danger" href="/Account/EliminarCuenta/@acc.IdUsuario">Eliminar Usuario</a></th>
+    }
+
+</tr>}
+    </tbody>
+</table> }
+            else
+            {
+<div class="container">
+    <h1 class="display-6">Usted no esta autorizado para ver este contenido.</h1>
+    <h2>Solo los administradores pueden ver este contenido.</h2>
+</div>}
+
+
+@code { List<Usuarios> GetUsuarios()
+            {
+                btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+                return db.Usuarios.ToList();
+            } }

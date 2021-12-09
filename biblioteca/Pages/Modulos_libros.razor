@@ -1,44 +1,59 @@
 @page "/Modulos_libros"
+@inject NavigationManager NavigationManager
 @using biblioteca.Models
+@using biblioteca.Data.AdminUsuarios;
 
+@if (Usuario.correo != null && Usuario.contrasena != null)
+{
+    <h3>Modulo de Libros</h3>
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Libro</th>
-      <th scope="col">Genero</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Copias Disponibles</th>
-      <th scope="col">Ventas</th>
-      <th scope="col">Editorial</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach(var item in Getlibros()){
-    <tr>
-      <td scope="row">@item.IdLibro</td>
-      <td scope="row">@item.NombreLibro</td>
-      <td scope="row">@item.GeneroLibro</td>
-      <td scope="row">@item.Precio</td>
-      <td scope="row">@item.CopiasDisponibles</td>
-      <td scope="row">@item.Ventas</td>
-      <td scope="row">@item.EditorialLibro</td>
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Libro</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Copias Disponibles</th>
+            <th scope="col">Ventas</th>
+            <th scope="col">Editorial</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Getlibros())
+        {
+        <tr>
+            <td scope="row">@item.IdLibro</td>
+            <td scope="row">@item.NombreLibro</td>
+            <td scope="row">@item.GeneroLibro</td>
+            <td scope="row">@item.Precio</td>
+            <td scope="row">@item.CopiasDisponibles</td>
+            <td scope="row">@item.Ventas</td>
+            <td scope="row">@item.EditorialLibro</td>
 
-      
-        <th><a class = "btn btn-warning" href="/EditarLibro/@item.IdLibro">Editar</a></th>
-        <th><a class = "btn btn-danger" href="/EliminarLibro/@item.IdLibro">Eliminar</a></th>
-    </tr>
-    }
-  </tbody>
+            @if (Usuario.admin == true)
+            {
+                <th><a class="btn btn-warning" href="/EditarLibro/@item.IdLibro">Editar</a></th>
+                <th><a class="btn btn-danger" href="/EliminarLibro/@item.IdLibro">Eliminar</a></th>                    
+            }
+
+        </tr>
+}
+    </tbody>
 </table>
-<a class = "btn btn-primary" href="/RegistrarLibros">Registrar</a>
-        
-@code {
-List<Libros> Getlibros(){
-    btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
-    return db.Libros.ToList();
-}
+                <a class="btn btn-primary" href="/RegistrarLibros">Registrar</a> }
+            else
+            {
+<div class="container">
+    <h1 class="display-6">Debes Iniciar Sesion con un correo valido para Vizualizar el contenido</h1>
+    <br>
+    <p>
+        Ya tienes una cuenta? Inicia Sesion
+    </p>
+    <a href="/Account/Login">Iniciar sesion</a>
+</div>}
 
-
-
-}
+@code { List<Libros> Getlibros()
+    {
+        btnnoysoy5udemk46n23Context db = new btnnoysoy5udemk46n23Context();
+        return db.Libros.ToList();
+    } }
